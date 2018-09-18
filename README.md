@@ -77,7 +77,7 @@ HEXファイル: led_blink.hex
 |make erase|ターゲットMCUのFlashを削除し, `make ir`する.|
 |make verify|ターゲットMCUのFlashをVerifyし, `make ir`する.|
 |make blank|ターゲットMCUのFlashをBlank Checkし, `make ir`する.|
-|make *w(*はワイルドカード)|ToolからターゲットMCUに電圧を供給し, 実行する.|
+|make *w(*はワイルドカード)|`Writer`からターゲットMCUに電圧を供給し, 実行する.|
 
 ## Demo Program
 PIC12F1822のピン番号7に接続されたLEDが1秒間隔で点滅する.
