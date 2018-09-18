@@ -23,6 +23,12 @@ Linux上でCUIのみで, PICマイコンをBuild, WriteするMakefileを作成�
 - Build Tool: [MPLAB® X IDE v5.05 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
 - Compiler: [MPLAB® XC8 Compliler v2.00 for Linux](http://www.microchip.com/mplab/compilers)
 
+~/.bashrcに以下を追記.
+
+```
+export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
+```
+
 ## Files
 ```bash
 $ tree -f .
