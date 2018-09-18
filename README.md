@@ -74,9 +74,9 @@ HEXファイル: led_blink.hex
 |make ir|`Makefile`, `*.md`, `*/`, `ソースファイル`, `HEXファイル`以外のファイルを削除する.|
 |make clean|`make ir`後, `HEXファイル`を削除する.|
 |make write|HEXファイルをターゲットMCUに書き込み, `make ir`する.|
-|make erase|ターゲットMCUのFlashを削除し, `make ir`する.|
-|make verify|ターゲットMCUのFlashをVerifyし, `make ir`する.|
-|make blank|ターゲットMCUのFlashをBlank Checkし, `make ir`する.|
+|make erase|`Target MCU`のFlashを削除し, `make ir`する.|
+|make verify|`Target MCU`のFlashをVerifyし, `make ir`する.|
+|make blank|`Target MCU`のFlashをBlank Checkし, `make ir`する.|
 |make *w(*はワイルドカード)|`Writer`からターゲットMCUに電圧を供給し, 実行する.|
 
 ## Demo Program
