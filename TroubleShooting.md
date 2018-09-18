@@ -1,4 +1,4 @@
-# pic-build-cui-linux
+# pic-cui-build-linux
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](./LICENSE)
 
 ## Trouble Shooting
