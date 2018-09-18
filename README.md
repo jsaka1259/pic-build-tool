@@ -32,6 +32,9 @@ export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
 ## Files
 ```bash
 $ tree -f .
+```
+
+```
 .
 ├── ./LICENSE
 ├── ./Makefile
@@ -90,6 +93,7 @@ PIC12F1822のピン番号7に接続されたLEDが1秒間隔で点滅する.
 ```bash
 $ make
 ```
+
 ```
 xc8-cc -mcpu=12F1822 ./src/*.c -o led_blink.hex
 
@@ -103,9 +107,11 @@ Memory Summary:
 
 rm -f __eeprom.d __eeprom.p1 led_blink.cmf led_blink.elf led_blink.hxl led_blink.o led_blink.s led_blink.sdb led_blink.sym main.d main.p1 startup.lst startup.o startup.rlf startup.s
 ```
+
 ```bash
 $ make writew
 ```
+
 ```
 ./tool/ipecmd.sh -P12F1822 -TPPK3 -Fled_blink.hex -M -W
 *****************************************************

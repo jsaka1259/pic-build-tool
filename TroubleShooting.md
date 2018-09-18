@@ -7,6 +7,7 @@
 ```bash
 $ make erasew
 ```
+
 ```
 ./tool/ipecmd.sh -P12F1822 -TPPK3 -E -W
 libusb couldn't open USB device /dev/bus/usb/001/020: Permission denied.
@@ -45,6 +46,7 @@ rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xm
 ```bash
 $ ls -l /dev/bus/usb/001/
 ```
+
 ```
 ...
 crw-r--r-- 1 root root 189, 19 Sep 18 19:15 020
@@ -58,6 +60,7 @@ crw-r--r-- 1 root root 189, 19 Sep 18 19:15 020
 $ sudo chmod 755 /dev/bus/usb/001/020
 $ ls -l /dev/bus/usb/001/
 ```
+
 ```
 ...
 crwxrw-rw- 1 root root 189, 19 Sep 18 19:24 020
@@ -69,6 +72,7 @@ crwxrw-rw- 1 root root 189, 19 Sep 18 19:24 020
 ```bash
 $ make erasew
 ```
+
 ```
 ./tool/ipecmd.sh -P12F1822 -TPPK3 -E -W
 *****************************************************
@@ -97,6 +101,7 @@ USBのデバイスファイルのパスは下記の手順で確認できる.
 ```bash
 $ lsusb
 ```
+
 ```
 ...
 Bus 001 Device 020: ID 04d8:900a Microchip Technology, Inc. PICkit3
