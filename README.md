@@ -25,7 +25,7 @@ Linux上でCUIのみで, PICマイコンをBuild, WriteするMakefileを作成�
 
 ## Files
 ```bash
-$ tree .
+$ tree -f .
 .
 ├── ./LICENSE
 ├── ./Makefile
