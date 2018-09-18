@@ -55,7 +55,7 @@ $ tree -f .
 |[./tool/ipecmd.sh](./tool/ipecmd.sh)|Microchip社が提供するipecmd.jarを呼び出すスクリプト|
 
 ## Make Rule
-コンパイラ: xc8-cc
+コンパイラ: xc8-cc  
 ソースファイル: src/*.c  
 HEXファイル: led_blink.hex
 
