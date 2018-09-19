@@ -34,10 +34,10 @@ rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xm
 
 > libusb couldn't open USB device /dev/bus/usb/001/020: Permission denied.
 
-デバイスファイル(/dev/bus/usb/001/020)の権限がないため, エラーになっているようだ.
+デバイスファイル (/dev/bus/usb/001/020) の権限がないため, エラーになっている.
 
-解決策としては, Writer(Pickit 3)をUSBポートから抜き差しすると直る場合がある.  
-それでも直らない場合, デバイスファイルの権限を変更する必要がある.(※管理者権限が必要)    
+解決策としては, Writer (Pickit 3) を USB ポートから抜き差しすると直る場合がある.  
+それでも直らない場合, デバイスファイルの権限を変更する必要がある. (※管理者権限が必要)    
 
 手順は以下のとおり.  
 
@@ -53,8 +53,7 @@ crw-r--r-- 1 root root 189, 19 Sep 18 19:15 020
 ...
 ```
 
-一般ユーザにはR/W権限がないみたいだ.  
-デバイスファイルの権限を`666`に変更することにより, デバイスへのR/Wが可能になる.
+デバイスファイルの権限を `666` に変更することにより, デバイスへの R/W が可能になる.
 
 ```bash
 $ sudo chmod 755 /dev/bus/usb/001/020
@@ -67,7 +66,7 @@ crwxrw-rw- 1 root root 189, 19 Sep 18 19:24 020
 ...
 ```
 
-この状態で実行できるかどうか確認する.
+最後に, 実行できるかどうか確認する.
 
 ```bash
 $ make erasew
@@ -89,14 +88,11 @@ Operation Succeeded
 rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xml.4 MPLABXLog.xml.5 MPLABXLog.xml.6 log.0
 ```
 
-無事, 実行できたようだ.    
-
-
 #### FYI
 
 Env: Ubuntu 18.04  
 
-USBのデバイスファイルのパスは下記の手順で確認できる.
+USB のデバイスファイルのパスは下記の手順で確認できる.
 
 ```bash
 $ lsusb
@@ -108,7 +104,7 @@ Bus 001 Device 020: ID 04d8:900a Microchip Technology, Inc. PICkit3
 ...
 ```
 
-Bus番号(001)とDevice番号(020)が, 以下のように/dev/bus/usb/配下のパスとリンクしている.
+Bus 番号 (001) と Device 番号 (020) が, 以下のように `/dev/bus/usb/` 配下のパスとリンクしている.
 
 ```
 /dev/bus/usb/"Bus番号(001)"/"デバイス番号(020)"

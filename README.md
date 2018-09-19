@@ -1,7 +1,7 @@
 # pic-cui-build-linux
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](./LICENSE)
 
-Linux上でCUIのみで, PICマイコンのソースコードをBuild, WriteするMakefileを作成したので公開する.
+Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Write する Makefile を作成したので公開する.
 
 - [Enviroment](#enviroment)
     - [Hardware](#hardware)
@@ -23,7 +23,7 @@ Linux上でCUIのみで, PICマイコンのソースコードをBuild, Writeす�
 - Build Tool: [MPLAB® X IDE v5.05 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
 - Compiler: [MPLAB® XC8 Compliler v2.00 for Linux](http://www.microchip.com/mplab/compilers)
 
-~/.bashrcに以下を追記.
+~/.bashrc に以下を追記.
 
 ```
 export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
@@ -54,14 +54,14 @@ $ tree -f .
 |File|Content|
 |:--|:--|
 |[./LICENSE](./LICENSE)|[LICENSE](#license)|
-|[./Makefile](./Makefile)|今回つくったもの|
-|[./README.md](./README.md)|これ|
-|[./TroubleShooting.md](./TroubleShooting.md)|[Trouble Shooting](#trouble-shooting)|
-|[./circuit/actual.jpg](./circuit/actual.jpg)|[ここ](#demo)で使用|
-|[./circuit/led_blink.svg](./circuit/led_blink.svg)|[ここ](#demo-program)に使用|
-|[./circuit/led_blink.txt](./circuit/led_blink.txt)|[goat](https://github.com/blampe/goat)でsvgファイルを生成するためのソース|
+|[./Makefile](./Makefile)|今回公開したかったもの|
+|[./README.md](./README.md)|[これ](#pic-cui-build-linux)|
+|[./TroubleShooting.md](./TroubleShooting.md)|[Trouble Shooting](#trouble-shooting) で使用|
+|[./circuit/actual.jpg](./circuit/actual.jpg)|[Demo](#demo) で使用|
+|[./circuit/led_blink.svg](./circuit/led_blink.svg)|[Demo Program](#demo-program) に使用|
+|[./circuit/led_blink.txt](./circuit/led_blink.txt)|[goat](https://github.com/blampe/goat) で svg ファイルを生成するためのソース|
 |[./src/main.c](./src/main.c)|デモ用プログラム|
-|[./tool/ipecmd.sh](./tool/ipecmd.sh)|Microchip社が提供するipecmd.jarを呼び出すスクリプト|
+|[./tool/ipecmd.sh](./tool/ipecmd.sh)|Microchip 社が提供する ipecmd.jar を呼び出すスクリプト|
 
 ## Make Rule
 コンパイラ: xc8-cc  
@@ -70,25 +70,25 @@ HEXファイル: led_blink.hex
 
 |Rule|Content|
 |:--|:--|
-|make|`make led_blink.hex`後, `make ir`する.|
-|make led_blink.hex|`コンパイラ`でコンパイルし, `HEXファイル`を生成する.(※更新がない場合は実行しない.)|
+|make|`make led_blink.hex` 後, `make ir` する.|
+|make led_blink.hex|`コンパイラ`でコンパイルし, `HEXファイル`を生成する. (※更新がない場合は実行しない.)|
 |make build|`コンパイラ`でコンパイルし, `HEXファイル`を生成する.|
-|make rebuild|`make clean`後, `make led_blink.hex`する.|
+|make rebuild|`make clean` 後, `make led_blink.hex` する.|
 |make ir|`Makefile`, `*.md`, `*/`, `ソースファイル`, `HEXファイル`以外のファイルを削除する.|
-|make clean|`make ir`後, `HEXファイル`を削除する.|
-|make write|`HEXファイル`を`Target MCU`に書き込み, `make ir`する.|
-|make erase|`Target MCU`のFlashを削除し, `make ir`する.|
-|make verify|`Target MCU`のFlashをVerifyし, `make ir`する.|
-|make blank|`Target MCU`のFlashをBlank Checkし, `make ir`する.|
-|make *w(*はワイルドカード)|`Writer`からターゲットMCUに電圧を供給し, 実行する.|
+|make clean|`make ir` 後, `HEXファイル`を削除する.|
+|make write|`HEXファイル`を `Target MCU` に書き込み, `make ir` する.|
+|make erase|`Target MCU` の Flash を Erase し, `make ir`する.|
+|make verify|`Target MCU`の Flash を Verify し, `make ir`する.|
+|make blank|`Target MCU`の Flash を Blank Check し, `make ir`する.|
+|make *w(*はワイルドカード)|`Writer` から `Target MCU` に電圧を供給し, 実行する.|
 
 ## Demo Program
-PIC12F1822のピン番号7に接続されたLEDが1秒間隔で点滅する.
+PIC12F1822 のピン番号 7 に接続された LED が 1 秒間隔で点滅する.
 
 ![Circuit](circuit/led_blink.svg "Circuit")
 
 ## Demo
-例として, `make`して, `make writew`したときの実行結果を示す.
+例として, `make` して, `make writew` したときの実行結果を示す.
 
 ```bash
 $ make
@@ -140,7 +140,7 @@ rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xm
 
 ## Trouble Shooting
 
-[ここ](./TroubleShooting.md)を参照.
+[./TroubleShooting.md](./TroubleShooting.md)を参照.
 
 ## LICENSE
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
