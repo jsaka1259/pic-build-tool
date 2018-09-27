@@ -74,7 +74,7 @@ HEXファイル: led_blink.hex
 |make led_blink.hex|`コンパイラ`でコンパイルし, `HEXファイル`を生成する. (※更新がない場合は実行しない.)|
 |make build|`コンパイラ`でコンパイルし, `HEXファイル`を生成する.|
 |make rebuild|`make clean` 後, `make led_blink.hex` する.|
-|make ir|`Makefile`, `*.md`, `*/`, `ソースファイル`, `HEXファイル`以外のファイルを削除する.|
+|make ir|`Makefile`, `LICENSE`, `*.md`, `*/`, `ソースファイル`, `HEXファイル`以外のファイルを削除する.|
 |make clean|`make ir` 後, `HEXファイル`を削除する.|
 |make write|`HEXファイル`を `Target MCU` に書き込み, `make ir` する.|
 |make erase|`Target MCU` の Flash を Erase し, `make ir`する.|
