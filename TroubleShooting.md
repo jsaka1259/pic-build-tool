@@ -29,7 +29,6 @@ Connection Failed.
 Erase Target Failed.
 Makefile:59: recipe for target '_erasew' failed
 make: [_erasew] Error 7 (無視されました)
-rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xml.4 MPLABXLog.xml.5 MPLABXLog.xml.6 log.0
 ```
 
 > libusb couldn't open USB device /dev/bus/usb/001/020: Permission denied.
@@ -85,7 +84,6 @@ Device ID Revision = 9
 Erasing...
 Erase successful
 Operation Succeeded
-rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xml.4 MPLABXLog.xml.5 MPLABXLog.xml.6 log.0
 ```
 
 #### FYI

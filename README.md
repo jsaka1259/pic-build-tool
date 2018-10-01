@@ -66,20 +66,23 @@ $ tree -f .
 ## Make Rule
 コンパイラ: xc8-cc  
 ソースファイル: src/*.c  
-HEXファイル: led_blink.hex
+HEXファイル: led_blink.hex  
+オブジェクトファイル: *.p1 *.d *.s *.sdb *.cmf *.sym *.hxl *.lst *.rlf *.o *.elf  
+ログファイル: log.* MPLABXLog.xml*
 
 |Rule|Content|
 |:--|:--|
-|make|`make led_blink.hex` 後, `make ir` する.|
+|make|`make led_blink.hex` する.|
 |make led_blink.hex|`コンパイラ`でコンパイルし, `HEXファイル`を生成する. (※更新がない場合は実行しない.)|
 |make build|`コンパイラ`でコンパイルし, `HEXファイル`を生成する.|
 |make rebuild|`make clean` 後, `make led_blink.hex` する.|
-|make ir|`Makefile`, `LICENSE`, `*.md`, `*/`, `ソースファイル`, `HEXファイル`以外のファイルを削除する.|
-|make clean|`make ir` 後, `HEXファイル`を削除する.|
-|make write|`HEXファイル`を `Target MCU` に書き込み, `make ir` する.|
-|make erase|`Target MCU` の Flash を Erase し, `make ir`する.|
-|make verify|`Target MCU`の Flash を Verify し, `make ir`する.|
-|make blank|`Target MCU`の Flash を Blank Check し, `make ir`する.|
+|make delobj|`オブジェクトファイル` を削除する.|
+|make dellog|`ログファイル` を削除する.|
+|make clean|`make delobj` し, `make dellog` 後, `HEXファイル`を削除する.|
+|make write|`HEXファイル`を `Target MCU` に書き込む.|
+|make erase|`Target MCU` の Flash を Erase する.|
+|make verify|`Target MCU`の Flash を Verify する.|
+|make blank|`Target MCU`の Flash を Blank Check する.|
 |make *w(*はワイルドカード)|`Writer` から `Target MCU` に電圧を供給し, 実行する.|
 
 ## Demo Program
@@ -105,7 +108,6 @@ Memory Summary:
     Configuration bits   used     2h (     2) of     2h words   (100.0%)
     ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
 
-rm -f __eeprom.d __eeprom.p1 led_blink.cmf led_blink.elf led_blink.hxl led_blink.o led_blink.s led_blink.sdb led_blink.sym main.d main.p1 startup.lst startup.o startup.rlf startup.s
 ```
 
 ```bash
@@ -133,7 +135,6 @@ PICKIT3 Program Report
 Device Type:PIC12F1822
 Program Succeeded.
 Operation Succeeded
-rm -f MPLABXLog.xml MPLABXLog.xml.1 MPLABXLog.xml.2 MPLABXLog.xml.3 MPLABXLog.xml.4 MPLABXLog.xml.5 MPLABXLog.xml.6 MPLABXLog.xml.7 MPLABXLog.xml.8 log.0
 ```
 
 ![actual](./circuit/actual.jpg)
