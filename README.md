@@ -23,13 +23,13 @@ Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Writ
 - Build Tool: [MPLAB® X IDE v5.05 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
 - Compiler: [MPLAB® XC8 Compliler v2.00 for Linux](http://www.microchip.com/mplab/compilers)
 
-~/.bashrc に以下を追記<a href="#1">\*1</a>.
+~/.bashrc に以下を追記<a href="#note1">\*1</a>.
 
 ```
 export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
 ```
 
-<span id="1" style="font-size:small">1: XC8 をインストール時に, 追記するか問われる.</span>
+<span id="note1" style="font-size:small">1: XC8 をインストール時に, 追記するか問われる.</span>
 
 ## Files
 ```bash
@@ -66,6 +66,12 @@ $ tree -f .
 |[./tool/ipecmd.sh](./tool/ipecmd.sh)|Microchip 社が提供する ipecmd.jar を呼び出すスクリプト|
 
 ## Make Rule
+コンパイラ: xc8-cc  
+ソースファイル: src/\*.c  
+HEX ファイル: led_blink.hex  
+オブジェクトファイル: \*.p1 \*.d \*.s \*.sdb \*.cmf \*.sym \*.hxl \*.lst \*.rlf \*.o \*.elf  
+ログファイル: log.\* MPLABXLog.xml\*  
+
 |Rule|Content|
 |:--|:--|
 |make|`make led_blink.hex` する.|
@@ -80,14 +86,6 @@ $ tree -f .
 |make verify|`Target MCU` の Flash を Verify する.|
 |make blank|`Target MCU` の Flash を Blank Check する.|
 |make *w(*はワイルドカード)|`Writer` から `Target MCU` に電圧を供給し, 実行する.|
-
-```
-コンパイラ: xc8-cc
-ソースファイル: src/*.c
-HEX ファイル: led_blink.hex
-オブジェクトファイル: *.p1 *.d *.s *.sdb *.cmf *.sym *.hxl *.lst *.rlf *.o *.elf
-ログファイル: log.* MPLABXLog.xml*
-```
 
 ## Demo Program
 PIC12F1822 のピン番号 7 に接続された LED が 1 秒間隔で点滅する.
