@@ -23,7 +23,7 @@ Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Writ
 - Build Tool: [MPLAB® X IDE v5.05 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
 - Compiler: [MPLAB® XC8 Compliler v2.00 for Linux](http://www.microchip.com/mplab/compilers)
 
-~/.bashrc に以下を追記[\*1](#note1).
+~/.bashrc に以下を追記[<sup>\*1</sup>](#note1).
 
 ```
 export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
