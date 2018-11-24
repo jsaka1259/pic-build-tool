@@ -76,7 +76,6 @@ HEX ファイル: led_blink.hex
 |:--|:--|
 |make|`make led_blink.hex` する.|
 |make led_blink.hex|`コンパイラ`でコンパイルし, `HEX ファイル`を生成する. (※更新がない場合は実行しない.)|
-|make build|`コンパイラ`でコンパイルし, `HEX ファイル`を生成する.|
 |make rebuild|`make clean` 後, `make led_blink.hex` する.|
 |make delobj|`オブジェクトファイル`を削除する.|
 |make dellog|`ログファイル`を削除する.|
@@ -100,7 +99,7 @@ $ make
 ```
 
 ```
-xc8-cc -mcpu=12F1822 ./src/*.c -o led_blink.hex
+xc8-cc -mcpu=12F1822 ./src/main.c -o led_blink.hex
 
 Memory Summary:
     Program space        used    40h (    64) of   800h words   (  3.1%)
