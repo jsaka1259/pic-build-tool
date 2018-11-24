@@ -1,8 +1,6 @@
 #include <xc.h>
 #include <stdint.h>
 
-#define _XTAL_FREQ 4000000      // Oscillator Frequency 4MHz
-
 // CONFIG1
 #pragma config FOSC = INTOSC    // Oscillator Selection (INTOSC oscillator: I/O function on CLKIN pin)
 #pragma config WDTE = OFF       // Watchdog Timer Enable (WDT disabled)
@@ -22,30 +20,26 @@
 #pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
 #pragma config LVP = OFF        // Low-Voltage Programming Enable (High-voltage on MCLR/VPP must be used for programming)
 
+#ifndef _XTAL_FREQ
+#define _XTAL_FREQ 4000000      // Oscillator Frequency 4MHz
+#endif
+
 void delay_10ms(uint16_t num)
 {
-     uint16_t lc;
-
-     for (lc = 0 ; lc < num ; lc++)
-     {
-          __delay_ms(10);
-     }
+	uint16_t lc;
+	for (lc = 0 ; lc < num ; lc++) {
+		__delay_ms(1);
+	}
 }
 
 void main()
 {
-     OSCCON = 0b01101010;      // INTOSC: 4MHz
-     ANSELA = 0b00000000;      // Analog: All Disable
-     TRISA  = 0b00001000;      // I/O: All OUT
-     PORTA  = 0b00000000;      // Port: All LOW
-
-     // Every second LED Blink
-     while(1)
-     {
-          RA0 = 1;             // Pin No.7(RA0): HIGH
-          delay_10ms(100);     // Wait 1.0 sec
-          RA0 = 0;             // Pin No.7(RA0): LOW
-          delay_10ms(100);     // Wait 1.0 sec
-    }
+	OSCCON = 0b01101010;          // INTOSC: 4MHz
+	ANSELA = 0b00000000;          // Analog: All Disable
+	TRISA  = 0b00001000;          // I/O: All OUT
+	PORTA  = 0b00000000;          // Port: All LOW
+	while(1) {
+		RA0 = ~RA0;                 // Pin No.7(RA0): TOGGLE
+		delay_10ms(1000);           // Wait 1.0 sec
+	}
 }
-
