@@ -21,7 +21,6 @@ DEFAULT: all
 all: $(PROG) # Build
 	@#
 
-.PHONY:
 $(PROG): $(SRCS)# Build
 	$(CC) -mcpu=$(CHIP) $(CFLAGS) $^ -o $@
 
