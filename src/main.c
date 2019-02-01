@@ -24,7 +24,7 @@
 #define _XTAL_FREQ 4000000      // Oscillator Frequency 4MHz
 #endif
 
-void delay_10ms(uint16_t num)
+void delay_ms(uint16_t num)
 {
 	uint16_t lc;
 	for (lc = 0 ; lc < num ; lc++) {
@@ -40,6 +40,6 @@ void main()
 	PORTA  = 0b00000000;          // Port: All LOW
 	while(1) {
 		RA0 = ~RA0;                 // Pin No.7(RA0): TOGGLE
-		delay_10ms(1000);           // Wait 1.0 sec
+		delay_ms(1000);           // Wait 1.0 sec
 	}
 }
