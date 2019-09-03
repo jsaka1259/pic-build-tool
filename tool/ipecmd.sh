@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # here="/path/to/mplab_ipe": Please change it according to your env.
 export here=/opt/microchip/mplabx/v5.05/mplab_platform/mplab_ipe
 export mplabx_dir=$here/..

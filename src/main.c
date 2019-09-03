@@ -26,20 +26,19 @@
 
 void delay_ms(uint16_t num)
 {
-	uint16_t lc;
-	for (lc = 0 ; lc < num ; lc++) {
-		__delay_ms(1);
-	}
+  uint16_t lc;
+  for (lc = 0 ; lc < num ; lc++)
+    __delay_ms(1);
 }
 
 void main()
 {
-	OSCCON = 0b01101010;          // INTOSC: 4MHz
-	ANSELA = 0b00000000;          // Analog: All Disable
-	TRISA  = 0b00001000;          // I/O: All OUT
-	PORTA  = 0b00000000;          // Port: All LOW
-	while(1) {
-		RA0 = ~RA0;                 // Pin No.7(RA0): TOGGLE
-		delay_ms(1000);           // Wait 1.0 sec
-	}
+  OSCCON = 0b01101010;          // INTOSC: 4MHz
+  ANSELA = 0b00000000;          // Analog: All Disable
+  TRISA  = 0b00001000;          // I/O: All OUT
+  PORTA  = 0b00000000;          // Port: All LOW
+  while(1) {
+    RA0 = ~RA0;                 // Pin No.7(RA0): TOGGLE
+    delay_ms(1000);           // Wait 1.0 sec
+  }
 }
