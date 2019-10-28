@@ -1,4 +1,4 @@
-# pic-cui-build-linux
+# pic-cui-build-tool
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](./LICENSE)
 
