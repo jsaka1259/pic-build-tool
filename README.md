@@ -41,7 +41,7 @@ export PATH="$PATH:'/opt/microchip/xc8/v2.10/bin'"
 tree -f .
 ```
 
-```bash
+```text
 .
 ├── ./LICENSE
 ├── ./Makefile
@@ -82,7 +82,7 @@ PIC12F1822 のピン番号 7 に接続された LED が 1 秒周期で点滅す�
 make
 ```
 
-```bash
+```text
 xc8-cc -mcpu=12F1822 ./src/main.c -o led_blink.hex
 
 Memory Summary:
@@ -99,7 +99,7 @@ Memory Summary:
 make writew
 ```
 
-```bash
+```text
 ./tool/ipecmd.sh -P12F1822 -TPPK3 -Fled_blink.hex -M -W
 *****************************************************
 Connecting to MPLAB PICkit 3...
