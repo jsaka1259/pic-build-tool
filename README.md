@@ -1,11 +1,12 @@
 # pic-cui-build-linux
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](./LICENSE)
 
 Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Write する Makefile を作成したので公開する.
 
 - [Enviroment](#enviroment)
-    - [Hardware](#hardware)
-    - [Software](#software)
+  - [Hardware](#hardware)
+  - [Software](#software)
 - [Files](#files)
 - [Make Rule](#make-rule)
 - [Demo Program](#demo-program)
@@ -14,29 +15,33 @@ Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Writ
 - [LICENSE](#license)
 
 ## Enviroment
+
 ### Hardware
+
 - Writer: [Pickit 3](https://www.microchip.com/Developmenttools/ProductDetails/PG164130)
 - Target MCU: [PIC12F1822](https://www.microchip.com/wwwproducts/en/PIC12F1822)
 
 ### Software
+
 - OS: [Ubuntu 18.04](https://www.ubuntu.com/)
-- Build Tool: [MPLAB® X IDE v5.05 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
-- Compiler: [MPLAB® XC8 Compliler v2.00 for Linux](http://www.microchip.com/mplab/compilers)
+- Build Tool: [MPLAB® X IDE v5.25 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
+- Compiler: [MPLAB® XC8 Compliler v2.10 for Linux](http://www.microchip.com/mplab/compilers)
 
 ~/.bashrc に以下を追記[<sup>\*1</sup>](#note1).
 
-```
-export PATH="$PATH:"/opt/microchip/xc8/v2.00/bin""
+```bash
+export PATH="$PATH:'/opt/microchip/xc8/v2.10/bin'"
 ```
 
 <a id="note1">\*1: XC8 をインストール時に, 追記するか問われる.</a>
 
 ## Files
+
 ```bash
-$ tree -f .
+tree -f .
 ```
 
-```
+```bash
 .
 ├── ./LICENSE
 ├── ./Makefile
@@ -59,46 +64,25 @@ $ tree -f .
 |[./Makefile](./Makefile)|今回公開したいもの|
 |[./README.md](./README.md)|[これ](#pic-cui-build-linux)|
 |[./TroubleShooting.md](./TroubleShooting.md)|[Trouble Shooting](#trouble-shooting) で使用|
-|[./circuit/actual.jpg](./circuit/actual.jpg)|[Demo](#demo) で使用|
-|[./circuit/led_blink.svg](./circuit/led_blink.svg)|[Demo Program](#demo-program) に使用|
-|[./circuit/led_blink.txt](./circuit/led_blink.txt)|[goat](https://github.com/blampe/goat) で svg ファイルを生成するためのソース|
+|[./circuit/actual.jpg](./circuit/actual.jpg)|[Example](#example) で使用|
+|[./circuit/led\_blink.svg](./circuit/led_blink.svg)|[Sample Program](#sample-program) に使用|
+|[./circuit/led\_blink.txt](./circuit/led_blink.txt)|[goat](https://github.com/blampe/goat) で svg ファイルを生成するためのソース|
 |[./src/main.c](./src/main.c)|デモ用プログラム|
 |[./tool/ipecmd.sh](./tool/ipecmd.sh)|Microchip 社が提供する ipecmd.jar を呼び出すスクリプト|
 
-## Make Rule
-コンパイラ: xc8-cc  
-ソースファイル: src/\*.c  
-HEX ファイル: led_blink.hex  
-オブジェクトファイル: \*.p1 \*.d \*.s \*.sdb \*.cmf \*.sym \*.hxl \*.lst \*.rlf \*.o \*.elf  
-ログファイル: log.\* MPLABXLog.xml\*  
+## Sample Program
 
-|Rule|Content|
-|:--|:--|
-|make|`make led_blink.hex` する.|
-|make led_blink.hex|`コンパイラ`でコンパイルし, `HEX ファイル`を生成する. (※更新がない場合は実行しない.)|
-|make rebuild|`make clean` 後, `make led_blink.hex` する.|
-|make delobj|`オブジェクトファイル`を削除する.|
-|make dellog|`ログファイル`を削除する.|
-|make clean|`make delobj` し, `make dellog` 後, `HEX ファイル`を削除する.|
-|make write|`HEX ファイル`を `Target MCU` に書き込む.|
-|make erase|`Target MCU` の Flash を Erase する.|
-|make verify|`Target MCU` の Flash を Verify する.|
-|make blank|`Target MCU` の Flash を Blank Check する.|
-|make *w(*はワイルドカード)|`Writer` から `Target MCU` に電圧を供給し, 実行する.|
-
-## Demo Program
-PIC12F1822 のピン番号 7 に接続された LED が 1 秒間隔で点滅する.
+PIC12F1822 のピン番号 7 に接続された LED が 1 秒周期で点滅する.
 
 ![Circuit](circuit/led_blink.svg "Circuit")
 
-## Demo
-例として, `make` して, `make writew` したときの実行結果を示す.
+## Example
 
 ```bash
-$ make
+make
 ```
 
-```
+```bash
 xc8-cc -mcpu=12F1822 ./src/main.c -o led_blink.hex
 
 Memory Summary:
@@ -112,10 +96,10 @@ Memory Summary:
 ```
 
 ```bash
-$ make writew
+make writew
 ```
 
-```
+```bash
 ./tool/ipecmd.sh -P12F1822 -TPPK3 -Fled_blink.hex -M -W
 *****************************************************
 Connecting to MPLAB PICkit 3...
@@ -145,4 +129,5 @@ Operation Succeeded
 [./TroubleShooting.md](./TroubleShooting.md)を参照.
 
 ## LICENSE
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
