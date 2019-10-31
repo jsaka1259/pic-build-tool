@@ -14,7 +14,7 @@ TOOL   := PPK3
 IPE    := ./tool/ipecmd.sh
 
 CC     := xc8-cc
-CFLAGS := -w
+CFLAGS := -mwarn=-9
 
 .PHONY: rebuild clean write erase verify blank
 .PHONY: writew erasew verifyw blankw
