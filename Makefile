@@ -16,12 +16,13 @@ IPE    := ./tool/ipecmd.sh
 CC     := xc8-cc
 CFLAGS := -mwarn=-9
 
-.PHONY: rebuild clean write erase verify blank
-.PHONY: writew erasew verifyw blankw
+.PHONY: rebuild clean
+.PHONY: write   erase  verify  blank
+.PHONY: writew  erasew verifyw blankw
 
 # Build
 $(BIN): $(SRCS)
-	@if [ ! -e `dirname $@` ]; then mkdir -p `dirname $@`; fi
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(CC) -mcpu=$(CHIP) $(CFLAGS) -o $@ $^
 
 # Clean and Build
@@ -33,34 +34,41 @@ clean:
 
 # Write BIN in CHIP using TOOL
 write:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M
 	@mv $(LOGS) $(OUTDIR)
 # Erase Flash Device
 erase:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -E
 	@mv $(LOGS) $(OUTDIR)
 # Verify Device
 verify:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y
 	@mv $(LOGS) $(OUTDIR)
 # Blank Check Device
 blank:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -C
 	@mv $(LOGS) $(OUTDIR)/
 
 # Write BIN in CHIP using TOOL. Power target from TOOL
 writew:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M -W
 	@mv $(LOGS) $(OUTDIR)
 # Erase Flash Device. Power target from TOOL
 erasew:
-	-$(IPE) -P$(CHIP) -T$(TOOL) -E -W
+	$(IPE) -P$(CHIP) -T$(TOOL) -E -W
 	@mv $(LOGS) $(OUTDIR)
 # Verify Device. Power target from TOOL
 verifyw:
-	-$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
+	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W
 	@mv $(LOGS) $(OUTDIR)
 # Blank Check Device. Power target from TOOL
 blankw:
-	-$(IPE) -P$(CHIP) -T$(TOOL) -C -W
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
+	$(IPE) -P$(CHIP) -T$(TOOL) -C -W
 	@mv $(LOGS) $(OUTDIR)
