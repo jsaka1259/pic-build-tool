@@ -12,6 +12,7 @@ TOOL   := PPK3
 
 # Writer shell script
 IPE    := ./tool/ipecmd.sh
+VDD    := 5.0
 
 CC     := xc8-cc
 CFLAGS := -mwarn=-9
@@ -56,19 +57,19 @@ blank:
 # Write BIN in CHIP using TOOL. Power target from TOOL
 writew:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M -W
+	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 # Erase Flash Device. Power target from TOOL
 erasew:
-	$(IPE) -P$(CHIP) -T$(TOOL) -E -W
+	$(IPE) -P$(CHIP) -T$(TOOL) -E -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 # Verify Device. Power target from TOOL
 verifyw:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W
+	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 # Blank Check Device. Power target from TOOL
 blankw:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -C -W
+	$(IPE) -P$(CHIP) -T$(TOOL) -C -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
