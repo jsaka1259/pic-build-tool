@@ -24,7 +24,7 @@ Linux 上で CUI のみで, PIC マイコンのソースコードを Build, Writ
 ### Software
 
 - OS: [Ubuntu 18.04](https://www.ubuntu.com/)
-- Build Tool: [MPLAB® X IDE v5.25 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
+- Build Tool: [MPLAB® X IDE v5.30 for Linux](http://www.microchip.com/mplab/mplab-x-ide)
 - Compiler: [MPLAB® XC8 Compliler v2.10 for Linux](http://www.microchip.com/mplab/compilers)
 
 ~/.bashrc に以下を追記[<sup>\*1</sup>](#note1).
@@ -37,12 +37,8 @@ export PATH="$PATH:'/opt/microchip/xc8/v2.10/bin'"
 
 ## Files
 
-```bash
-tree -f .
-```
-
 ```text
-.
+./
 ├── ./LICENSE
 ├── ./Makefile
 ├── ./README.md
@@ -55,7 +51,6 @@ tree -f .
 │   └── ./src/main.c
 └── ./tool
     └── ./tool/ipecmd.sh
-...
 ```
 
 |File|Content|
@@ -83,16 +78,16 @@ make
 ```
 
 ```text
-xc8-cc -mcpu=12F1822 ./src/main.c -o led_blink.hex
+xc8-cc -mcpu=12F1822 -mwarn=-9 -o build/led_blink.hex src/main.c
+src/main.c:34:: warning: (752) conversion to shorter data type
 
 Memory Summary:
-    Program space        used    40h (    64) of   800h words   (  3.1%)
-    Data space           used     7h (     7) of    80h bytes   (  5.5%)
+    Program space        used    1Fh (    31) of   800h words   (  1.5%)
+    Data space           used     4h (     4) of    80h bytes   (  3.1%)
     EEPROM space         used     0h (     0) of   100h bytes   (  0.0%)
     Data stack space     used     0h (     0) of    70h bytes   (  0.0%)
     Configuration bits   used     2h (     2) of     2h words   (100.0%)
     ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
-
 ```
 
 ```bash
@@ -100,15 +95,15 @@ make writew
 ```
 
 ```text
-./tool/ipecmd.sh -P12F1822 -TPPK3 -Fled_blink.hex -M -W
+./tool/ipecmd.sh -P12F1822 -TPPK3 -Fbuild/led_blink.hex -M -W5.0
 *****************************************************
 Connecting to MPLAB PICkit 3...
 Currently loaded firmware on PICkit 3
-Firmware Suite Version.....01.54.00
+Firmware Suite Version.....01.56.02
 Firmware type..............Enhanced Midrange
 Programmer to target power is enabled - VDD = 5.000000 volts.
 Target device PIC12F1822 found.
-Device ID Revision = 9
+Device Revision ID = 9
 Device Erased...
 Programming...
 The following memory area(s) will be programmed:
@@ -116,7 +111,7 @@ program memory: start address = 0x0, end address = 0x7ff
 configuration memory
 Programming/Verify complete
 PICKIT3 Program Report
-18-9-2018, 13:52:58
+19-11-2019, 01:08:50
 Device Type:PIC12F1822
 Program Succeeded.
 Operation Succeeded

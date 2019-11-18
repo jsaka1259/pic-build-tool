@@ -14,22 +14,24 @@
 
 // CONFIG2
 #pragma config WRT = OFF        // Flash Memory Self-Write Protection (Write protection off)
-#pragma config PLLEN = OFF      // PLL Enable (4x PLL disabled)
+#pragma config PLLEN = ON       // PLL Enable (4x PLL disabled)
 #pragma config STVREN = OFF     // Stack Overflow/Underflow Reset Enable (Stack Overflow or Underflow will not cause a Reset)
 #pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
 #pragma config LVP = OFF        // Low-Voltage Programming Enable (High-voltage on MCLR/VPP must be used for programming)
 
 #ifndef _XTAL_FREQ
-#define _XTAL_FREQ 4000000      // Oscillator Frequency 4MHz
+#define _XTAL_FREQ 32000000     // oscillator frequency 32MHz
 #endif
 
 void main() {
-  OSCCON = 0b01101010;          // INTOSC: 4MHz
-  ANSELA = 0b00000000;          // Analog: All Disable
-  TRISA  = 0b00001000;          // I/O: All OUT
-  PORTA  = 0b00000000;          // Port: All LOW
+  OSCCON = 0b01110000;          // SPLLEN  : disable
+                                // IRCF    : 32MHz
+                                // SCS     : follow configration bits
+  ANSELA = 0b00000000;          // analog  : all disable
+  TRISA  = 0b00001000;          // i/o mode: all output mode
+  PORTA  = 0b00000000;          // Port A  : all low
   while(1) {
-    RA0 = ~RA0;                 // Pin No.7(RA0): TOGGLE
-    __delay_ms(500);            // Wait 0.5 sec
+    RA0 = ~RA0;                 // toggle RA0(pin 7)
+    __delay_ms(500);            // wait 0.5 sec
   }
 }
