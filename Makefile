@@ -69,6 +69,7 @@ writew:
 	@mv $(LOGS) $(OUTDIR)
 
 erasew:
+	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
 	$(IPE) -P$(CHIP) -T$(TOOL) -E -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 
