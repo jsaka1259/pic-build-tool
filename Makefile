@@ -2,7 +2,7 @@ HEX    := led_blink
 CHIP   := 12F1822
 
 SRCDIR := src
-SRCS   := $(SRCDIR)/*.c
+SRCS   := $(shell find $(SRCDIR) -type f -name *.c)
 OUTDIR := build
 BIN    := $(OUTDIR)/$(HEX).hex
 LOGS   := log.* MPLABXLog.xml*
