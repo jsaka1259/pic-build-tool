@@ -40,45 +40,45 @@ clean:
 # Write BIN in CHIP using TOOL
 write:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M
+	-$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M
 	@mv $(LOGS) $(OUTDIR)
 
 # Erase Flash Device
 erase:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -E
+	-$(IPE) -P$(CHIP) -T$(TOOL) -E
 	@mv $(LOGS) $(OUTDIR)
 
 # Verify Device
 verify:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y
+	-$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y
 	@mv $(LOGS) $(OUTDIR)
 
 # Blank Check Device
 blank:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -C
+	-$(IPE) -P$(CHIP) -T$(TOOL) -C
 	@mv $(LOGS) $(OUTDIR)/
 
 
 # Power from TOOL
 writew:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M -W$(VDD)
+	-$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -M -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 
 erasew:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -E -W$(VDD)
+	-$(IPE) -P$(CHIP) -T$(TOOL) -E -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 
 verifyw:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W$(VDD)
+	-$(IPE) -P$(CHIP) -T$(TOOL) -F$(BIN) -Y -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
 
 blankw:
 	@if [ ! -e $(OUTDIR) ]; then mkdir -p $(OUTDIR); fi
-	$(IPE) -P$(CHIP) -T$(TOOL) -C -W$(VDD)
+	-$(IPE) -P$(CHIP) -T$(TOOL) -C -W$(VDD)
 	@mv $(LOGS) $(OUTDIR)
